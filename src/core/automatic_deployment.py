@@ -1,7 +1,9 @@
+import shutil
 from src.controllers.load_data import load_files_and_merge
 from src.lib.write_files import async_write_merged_files
 from src.controllers.github import create_and_push_repo
 from src.controllers.vercel import deploy_to_vercel
+from src.utils.delete_project import on_rm_error
 
 
 async def automatic_deployment(
@@ -27,4 +29,7 @@ async def automatic_deployment(
         folder_path=f"output/{uuid}/{repo_name}",
         files=merged_files,
     )
+    
+    # delete output folder
+    shutil.rmtree(f"output/{uuid}/{repo_name}", onerror=on_rm_error)
     return deployment_vercel_url, hosted_vercel_url, is_error
