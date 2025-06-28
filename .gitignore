@@ -1,0 +1,8 @@
+output/*
+venv
+venv/*
+__pycache__/*
+.env
+
+*/__pycache__/*
+output

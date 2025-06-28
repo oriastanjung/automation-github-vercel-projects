@@ -1,0 +1,6 @@
+pydantic
+python_dotenv
+requests
+aiohttp
+aiofiles
+httpx
